@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-todoapp
+  namespace: mateapp
+  labels:
+    app: todoapp
+spec:
+  selector:
+    matchLabels:
+      app mate-server
+    template:
+      metadata:
+        labels:
+          app: mate-server
+      spec:
+        containers:
+        - name: meta-server
+          image: busyboxplus:curl
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
+            limits:
+              cpu: "200m"
+              memory: "200Mi"
+
+

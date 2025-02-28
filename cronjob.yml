@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: Cronkob-todoapp
+  namespace: mateapp
+spec:
+  schedule: "*/4 * * * *"
+  concurrencyPolicy: Allow
+  successfulJobsHistoryLimit: 10
+  failedJobsHistoryLImit: 5
+  jobTemplate:
+    spec:
+      containers:
+      - name: cronjob
+        image: busyboxplus:curl
+        command:
+        - /api/health
