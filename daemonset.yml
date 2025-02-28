@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app mate-server
+      app: mate-server
     template:
       metadata:
         labels:
