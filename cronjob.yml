@@ -14,4 +14,6 @@ spec:
       - name: cronjob
         image: busyboxplus:curl
         command:
-        - /api/health
+          - "curl"
+          - "-v"
+          - "http://todoapp-service.mateapp.svc.cluster.local/api/health"

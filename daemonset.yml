@@ -1,4 +1,4 @@
-apiVersion: batch/v1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: daemonset-todoapp
@@ -17,6 +17,12 @@ spec:
         containers:
         - name: meta-server
           image: busyboxplus:curl
+          command:
+            - "while"
+            - "do"
+            - "sleep 5"
+            - "curl http://todoapp-service.mateapp.svc.cluster.local/api/health"
+            - "done"
           resources:
             requests:
               cpu: "100m"
